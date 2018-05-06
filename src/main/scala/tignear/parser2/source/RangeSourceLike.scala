@@ -1,7 +1,5 @@
 package tignear.parser2.source
 
-import scala.collection.generic.CanBuildFrom
-
 trait RangeSourceLike[@specialized +Value,+RValue,+That<:RangeSourceLike[Value,RValue,That]] extends Source[Value] with SourceLike[Value,That]{
   def peekRange(len:Int):RValue
   def getRange(len:Int):(RValue,That)
@@ -15,5 +13,5 @@ trait RangeSourceLike[@specialized +Value,+RValue,+That<:RangeSourceLike[Value,R
 
   override def get : (Value,That)
 
-  override def getOption :(Value,That)
+  override def getOption :Option[(Value,That)]
 }

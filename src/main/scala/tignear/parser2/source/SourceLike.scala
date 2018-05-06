@@ -5,5 +5,5 @@ trait SourceLike[@specialized +Value,+That<:SourceLike[Value,That]]{
   def peekOption:Option[Value]
   def next:That
   def get:(Value,That)
-  def getOption:(Value,That)
+  def getOption:Option[(Value,That)]
 }

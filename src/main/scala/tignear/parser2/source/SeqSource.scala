@@ -1,5 +1,4 @@
 package tignear.parser2.source
-import scala.collection.generic.CanBuildFrom
 
 class SeqSource[@specialized +Value](seq:Seq[Value]) extends RangeSource [Value,Seq[Value]] with RangeSourceLike [Value,Seq[Value],SeqSource[Value]]{
 
@@ -24,6 +23,6 @@ class SeqSource[@specialized +Value](seq:Seq[Value]) extends RangeSource [Value,
   override def get = {
     (seq.head,new SeqSource[Value](seq.tail))
   }
-  override def getOption = ???
 
+  override def getOption = seq.headOption.map(e=>(e,new SeqSource[Value](seq.tail)))
 }
